@@ -1,0 +1,38 @@
+export const recentAppointments = [
+    {
+      id: 1,
+      patient: "Maria Silva",
+      date: "2025-01-10",
+      time: "09:00",
+      duration: "50 min",
+      status: "completed",
+      value: 150.0,
+    },
+    {
+      id: 2,
+      patient: "João Santos",
+      date: "2025-01-10",
+      time: "10:00",
+      duration: "50 min",
+      status: "completed",
+      value: 150.0,
+    },
+    {
+      id: 3,
+      patient: "Ana Costa",
+      date: "2025-01-10",
+      time: "14:00",
+      duration: "50 min",
+      status: "scheduled",
+      value: 150.0,
+    },
+    {
+      id: 4,
+      patient: "Pedro Oliveira",
+      date: "2025-01-11",
+      time: "09:00",
+      duration: "50 min",
+      status: "scheduled",
+      value: 150.0,
+    },
+  ]

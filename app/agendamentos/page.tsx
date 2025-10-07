@@ -107,11 +107,9 @@ export default function AgendamentosPage() {
   )
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <Sidebar selectedView={selectedView} onViewChange={setSelectedView} />
-
+   <div className="flex min-h-screen w-full bg-background">
       <main className="flex-1 p-8">
-        <div className="max-w-7xl mx-auto space-y-6">
+        <div className=" mx-auto space-y-6">
           {/* Header */}
           <div className="flex items-center justify-between">
             <div>

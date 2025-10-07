@@ -12,8 +12,24 @@ import { PatientDialog } from "@/components/patient-dialog"
 import { SessionNotesDialog } from "@/components/session-notes-dialog"
 import { recentAppointments } from "@/mocks/DashboardMock"
 import { useRouter } from "next/navigation"
+import { Loader } from "@/components/loader/loader"
 
 export default function DashboardPage() {
+  const [appointmentDialogOpen, setAppointmentDialogOpen] = useState(false)
+  const [patientDialogOpen, setPatientDialogOpen] = useState(false)
+  const [sessionDialogOpen, setSessionDialogOpen] = useState(false)
+  const [selectedAppointment, setSelectedAppointment] = useState<any>(null)
   const navigate = useRouter()
-  return navigate.push('/dashboard')
+  const todayAppointments = recentAppointments.filter((apt) => apt.date === "2025-01-10")
+
+  const handleViewSession = (appointment: any) => {
+    setSelectedAppointment(appointment)
+    setSessionDialogOpen(true)
+  }
+
+  return (
+    <div className="flex min-h-screen w-full bg-background">
+     <Loader/>
+    </div>
+  )
 }

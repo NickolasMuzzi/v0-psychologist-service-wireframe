@@ -87,11 +87,9 @@ export default function SessionPage() {
   const isLowTime = sessionTime < 5 * 60 // Less than 5 minutes
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <Sidebar selectedView={selectedView} onViewChange={setSelectedView} />
-
+   <div className="flex min-h-screen w-full bg-background">
       <main className="flex-1 p-8">
-        <div className="max-w-7xl mx-auto space-y-8">
+        <div className=" mx-auto space-y-8">
           {/* Header */}
           <div className="flex items-center justify-between">
             <div>
