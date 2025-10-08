@@ -17,6 +17,10 @@ const badgeVariants = cva(
           'border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
         outline:
           'text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground',
+        success:
+          "bg-green-300 text-accent-foreground",
+        info:
+          "bg-blue-300 text-accent-foreground"
       },
     },
     defaultVariants: {
@@ -25,19 +29,19 @@ const badgeVariants = cva(
   },
 )
 
-function Badge({
+function Badge ( {
   className,
   variant,
   asChild = false,
   ...props
 }: React.ComponentProps<'span'> &
-  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+  VariantProps<typeof badgeVariants> & { asChild?: boolean } ) {
   const Comp = asChild ? Slot : 'span'
 
   return (
     <Comp
       data-slot="badge"
-      className={cn(badgeVariants({ variant }), className)}
+      className={cn( badgeVariants( { variant } ), className )}
       {...props}
     />
   )

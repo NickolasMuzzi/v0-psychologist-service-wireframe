@@ -13,17 +13,17 @@ import { SessionNotesDialog } from "@/components/session-notes-dialog"
 import { recentAppointments } from "@/mocks/DashboardMock"
 import { useRouter } from "next/navigation"
 
-export default function DashboardPage() {
-  const [appointmentDialogOpen, setAppointmentDialogOpen] = useState(false)
-  const [patientDialogOpen, setPatientDialogOpen] = useState(false)
-  const [sessionDialogOpen, setSessionDialogOpen] = useState(false)
-  const [selectedAppointment, setSelectedAppointment] = useState<any>(null)
+export default function DashboardPage () {
+  const [appointmentDialogOpen, setAppointmentDialogOpen] = useState( false )
+  const [patientDialogOpen, setPatientDialogOpen] = useState( false )
+  const [sessionDialogOpen, setSessionDialogOpen] = useState( false )
+  const [selectedAppointment, setSelectedAppointment] = useState<any>( null )
   const navigate = useRouter()
-  const todayAppointments = recentAppointments.filter((apt) => apt.date === "2025-01-10")
+  const todayAppointments = recentAppointments.filter( ( apt ) => apt.date === "2025-01-10" )
 
-  const handleViewSession = (appointment: any) => {
-    setSelectedAppointment(appointment)
-    setSessionDialogOpen(true)
+  const handleViewSession = ( appointment: any ) => {
+    setSelectedAppointment( appointment )
+    setSessionDialogOpen( true )
   }
 
   return (
@@ -37,11 +37,11 @@ export default function DashboardPage() {
               <p className="text-muted-foreground mt-1">Bem-vindo de volta, Dr. Silva</p>
             </div>
             <div className="flex gap-3">
-              <Button onClick={() => setPatientDialogOpen(true)} variant="outline">
+              <Button onClick={() => setPatientDialogOpen( true )} variant="outline">
                 <Users className="w-4 h-4 mr-2" />
                 Novo Paciente
               </Button>
-              <Button onClick={() => setAppointmentDialogOpen(true)}>
+              <Button onClick={() => setAppointmentDialogOpen( true )}>
                 <Plus className="w-4 h-4 mr-2" />
                 Novo Agendamento
               </Button>
@@ -86,7 +86,7 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-semibold text-foreground">R$ 8.400</div>
-                <p className="text-xs text-accent mt-1">+12% vs mês anterior</p>
+                <p className="text-xs mt-1 text-muted-foreground">+12% vs mês anterior</p>
               </CardContent>
             </Card>
           </div>
@@ -109,7 +109,7 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
-                {todayAppointments.map((appointment) => (
+                {todayAppointments.map( ( appointment ) => (
                   <div
                     key={appointment.id}
                     className="flex items-center justify-between p-4 rounded-lg border border-border bg-background hover:bg-secondary/50 transition-colors"
@@ -125,24 +125,24 @@ export default function DashboardPage() {
                             <Clock className="w-3 h-3" />
                             {appointment.duration}
                           </span>
-                          <span className="text-sm text-muted-foreground">R$ {appointment.value.toFixed(2)}</span>
+                          <span className="text-sm text-muted-foreground">R$ {appointment.value.toFixed( 2 )}</span>
                         </div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <Badge
-                        variant={appointment.status === "completed" ? "default" : "secondary"}
-                        className={appointment.status === "completed" ? "bg-accent text-accent-foreground" : ""}
+                        variant={appointment.status === "completed" ? "success" : "info"}
+                        className={appointment.status === "completed" ? "text-accent-foreground" : ""}
                       >
                         {appointment.status === "completed" ? "Realizada" : "Agendada"}
                       </Badge>
-                      <Button variant="outline" size="sm" onClick={() => handleViewSession(appointment)}>
+                      <Button variant="outline" size="sm" onClick={() => handleViewSession( appointment )}>
                         <FileText className="w-4 h-4 mr-2" />
                         {appointment.status === "completed" ? "Ver Anotações" : "Iniciar"}
                       </Button>
                     </div>
                   </div>
-                ))}
+                ) )}
               </div>
             </CardContent>
           </Card>
@@ -157,18 +157,18 @@ export default function DashboardPage() {
               <CardContent>
                 <div className="space-y-4">
                   {recentAppointments
-                    .filter((apt) => apt.status === "scheduled")
-                    .map((appointment) => (
+                    .filter( ( apt ) => apt.status === "scheduled" )
+                    .map( ( appointment ) => (
                       <div key={appointment.id} className="flex items-center justify-between">
                         <div>
                           <p className="font-medium text-foreground">{appointment.patient}</p>
                           <p className="text-sm text-muted-foreground">
-                            {new Date(appointment.date).toLocaleDateString("pt-BR")} às {appointment.time}
+                            {new Date( appointment.date ).toLocaleDateString( "pt-BR" )} às {appointment.time}
                           </p>
                         </div>
-                        <Badge variant="secondary">Agendada</Badge>
+                        <Badge variant="info">Agendada</Badge>
                       </div>
-                    ))}
+                    ) )}
                 </div>
               </CardContent>
             </Card>
